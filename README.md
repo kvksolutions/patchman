@@ -1,4 +1,4 @@
 patchman
 ========
 
-Linux patch management recipe
+Patch management strategy for Linux systems.
