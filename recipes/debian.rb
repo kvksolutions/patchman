@@ -16,3 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# install unattended-upgrade package
+
+# install /etc/apt/apt.conf.d/02periodic from template
+
+# replace /etc/apt/apt.conf.d/50unattended-upgrades with new templated version
+
+# add motd file to note day and time of patching for this system
+# added in /etc/update-motd.d/92-patch-day-info
+
+# create cronjob to run unattended-upgrade at the date/time provided in configuration
