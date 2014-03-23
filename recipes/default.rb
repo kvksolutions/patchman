@@ -17,23 +17,13 @@
 # limitations under the License.
 #
 
-# 'define' allows for various environments to be defined as either qa or prod
-default['patchman']['qa']['define'] = []
-default['patchman']['prod']['define'] = []
-
-default['patchman']['qa']['enable'] = true
-default['patchman']['qa']['day'] = 
-default['patchman']['qa']['time'] =
-
-default['patchman']['prod']['enable'] = true
-default['patchman']['prod']['day'] = 
-default['patchman']['prod']['time'] = 
-
-default['patchman']['config']['enable']['email'] = false
-default['patchman']['config']['email'] = ''
-default['patchman']['config']['qa']['exclude_list'] = []
-default['patchman']['config']['prod']['exclude_list'] = []
-default['patchman']['config']['qa']['motd_enabled'] = true
-default['patchman']['config']['prod']['motd_enabled'] = true
-default['patchman']['config']['debian']['qa']['security_only'] = false
-default['patchman']['config']['debian']['prod']['security_only'] = false
+case node['platform_family']
+when 'debian'
+  include_recipe 'patchman::debian'
+when 'rhel'
+  include_recipe 'patchman::rhel'
+else
+  log "Not able to locate supported OS" do
+  	level :warn
+  end
+end
