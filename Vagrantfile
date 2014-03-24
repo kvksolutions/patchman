@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
       }
     }
     chef.run_list = [
-      "recipe[rackspace_python::default]"
+      "recipe[patchman::default]"
     ]
   end
 end
