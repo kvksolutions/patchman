@@ -17,23 +17,26 @@
 # limitations under the License.
 #
 
-# 'define' allows for various environments to be defined as either qa or prod
-default['patchman']['qa']['define'] = []
+# 'define' allows for various environments to be defined as either test or prod
+default['patchman']['test']['define'] = []
 default['patchman']['prod']['define'] = []
+# all nodes default to test unless otherwise overwritten
+default['patchman']['environment'] = 'test'
 
-default['patchman']['qa']['enable'] = true
-default['patchman']['qa']['day'] = 
-default['patchman']['qa']['time'] =
+default['patchman']['test']['enable'] = true
+default['patchman']['test']['day'] =
+default['patchman']['test']['time'] =
 
 default['patchman']['prod']['enable'] = true
-default['patchman']['prod']['day'] = 
-default['patchman']['prod']['time'] = 
+default['patchman']['prod']['day'] =
+default['patchman']['prod']['time'] =
 
 default['patchman']['config']['enable']['email'] = false
 default['patchman']['config']['email'] = ''
-default['patchman']['config']['qa']['exclude_list'] = []
+default['patchman']['config']['test']['exclude_list'] = []
 default['patchman']['config']['prod']['exclude_list'] = []
-default['patchman']['config']['qa']['motd_enabled'] = true
+default['patchman']['config']['test']['motd_enabled'] = true
 default['patchman']['config']['prod']['motd_enabled'] = true
-default['patchman']['config']['debian']['qa']['security_only'] = false
+default['patchman']['config']['debian']['test']['security_only'] = false
 default['patchman']['config']['debian']['prod']['security_only'] = false
+

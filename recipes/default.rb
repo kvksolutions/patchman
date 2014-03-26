@@ -17,6 +17,22 @@
 # limitations under the License.
 #
 
+# loop through test.define and if match set node.default
+patchman.test.define do |env|
+  if node.chef_environment == env
+    then node.default['patchman']['environment'] = 'test'
+  end
+end
+# loop through prod.define and if match set node.default
+patchman.prod.define do |env|
+  if node.chef_environment == env
+    then node.default['patchman']['environment'] = 'prod'
+  end
+end
+# else set node.default to test
+node.default['patchman']['environment'] = 'prod'
+
+
 case node['platform_family']
 when 'debian'
   include_recipe 'patchman::debian'

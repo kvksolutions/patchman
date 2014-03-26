@@ -18,6 +18,9 @@
 #
 
 # install unattended-upgrade package
+apt_package 'unattended-upgrade' do
+  action :install
+end
 
 # install /etc/apt/apt.conf.d/02periodic from template
 
@@ -27,3 +30,4 @@
 # added in /etc/update-motd.d/92-patch-day-info
 
 # create cronjob to run unattended-upgrade at the date/time provided in configuration
+

@@ -15,8 +15,8 @@ Vagrant.configure("2") do |config|
     ubuntu.omnibus.chef_version = :latest
     ubuntu.vm.network :private_network, ip: "192.168.254.12"
   end
-  
-  
+
+
   config.vm.boot_timeout = 120
   config.berkshelf.enabled = true
 
@@ -33,4 +33,3 @@ Vagrant.configure("2") do |config|
     ]
   end
 end
-
