@@ -17,21 +17,13 @@
 # limitations under the License.
 #
 
-# loop through test.define and if match set node.default
-patchman.test.define do |env|
-  if node.chef_environment == env
-    then node.default['patchman']['environment'] = 'test'
-  end
+# determine what environment current node resides and set ['patchman']['environment'] variable.
+if ['patchman']['test']['define'].include? node.chef_environment
+  then node.default['patchman']['environment'] = 'test'
+elsif ['patchman']['prod']['define'].include? node.chef_environment
+  then node.default['patchman']['environment'] = 'prod'
+else node.default['patchman']['environment'] = 'prod'
 end
-# loop through prod.define and if match set node.default
-patchman.prod.define do |env|
-  if node.chef_environment == env
-    then node.default['patchman']['environment'] = 'prod'
-  end
-end
-# else set node.default to test
-node.default['patchman']['environment'] = 'prod'
-
 
 case node['platform_family']
 when 'debian'
