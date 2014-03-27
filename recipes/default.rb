@@ -22,7 +22,11 @@ if ['patchman']['test']['define'].include? node.chef_environment
   then node.default['patchman']['environment'] = 'test'
 elsif ['patchman']['prod']['define'].include? node.chef_environment
   then node.default['patchman']['environment'] = 'prod'
-else node.default['patchman']['environment'] = 'prod'
+else 
+  log "Unable to determine environment so setting ['patchman']['environment'] to 'prod'" do
+  	level :warn
+  end
+  node.default['patchman']['environment'] = 'prod'
 end
 
 case node['platform_family']
