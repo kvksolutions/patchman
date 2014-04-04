@@ -21,7 +21,7 @@
 default['patchman']['test']['define'] = []
 default['patchman']['prod']['define'] = []
 # all nodes default to test unless otherwise overwritten
-default['patchman']['environment'] = 'test'
+default['patchman']['environment'] = 'prod'
 
 default['patchman']['test']['enable'] = true
 default['patchman']['test']['day'] =
