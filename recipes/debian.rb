@@ -23,11 +23,29 @@ apt_package 'unattended-upgrade' do
 end
 
 # install /etc/apt/apt.conf.d/02periodic from template
+template "/etc/apt/apt.conf.d/02periodic" do
+  source "02periodic.erb"
+  mode 0440
+  owner "root"
+  group "root"
+end
 
 # replace /etc/apt/apt.conf.d/50unattended-upgrades with new templated version
+template "/etc/apt/apt.conf.d/50unattended-upgrades" do
+  source "50unattended-upgrades.erb"
+  mode 0440
+  owner "root"
+  group "root"
+end
 
 # add motd file to note day and time of patching for this system
 # added in /etc/update-motd.d/92-patch-day-info
+template "/etc/update-motd.d/92-patch-day-info" do
+  source "92-patch-day-info.erb"
+  mode 0440
+  owner "root"
+  group "root"
+end
 
 # create cronjob to run unattended-upgrade at the date/time provided in configuration
 
