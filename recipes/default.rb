@@ -18,9 +18,9 @@
 #
 
 # determine what environment current node resides and set ['patchman']['environment'] variable.
-if ['patchman']['test']['define'].include? node.chef_environment
+if node['patchman']['test']['define'].include? node.chef_environment
   then node.default['patchman']['environment'] = 'test'
-elsif ['patchman']['prod']['define'].include? node.chef_environment
+elsif node['patchman']['prod']['define'].include? node.chef_environment
   then node.default['patchman']['environment'] = 'prod'
 else 
   log "Unable to determine environment so setting ['patchman']['environment'] to 'prod'" do

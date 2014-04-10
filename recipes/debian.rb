@@ -18,7 +18,7 @@
 #
 
 # install unattended-upgrade package
-apt_package 'unattended-upgrade' do
+apt_package 'unattended-upgrades' do
   action :install
 end
 

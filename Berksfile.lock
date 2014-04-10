@@ -1,0 +1,13 @@
+{
+  "sources": {
+    "patchman": {
+      "path": "."
+    },
+    "yum": {
+      "locked_version": "3.0.2"
+    },
+    "apt": {
+      "locked_version": "2.3.8"
+    }
+  }
+}
