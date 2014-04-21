@@ -23,29 +23,57 @@ apt_package 'unattended-upgrades' do
 end
 
 # install /etc/apt/apt.conf.d/02periodic from template
-template "/etc/apt/apt.conf.d/02periodic" do
-  source "02periodic.erb"
+template '/etc/apt/apt.conf.d/02periodic' do
+  cookbook node['patchman']['template']['02periodic']
+  source '02periodic.erb'
   mode 0440
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
+  variables(cookbook_name: cookbook_name)
 end
 
 # replace /etc/apt/apt.conf.d/50unattended-upgrades with new templated version
-template "/etc/apt/apt.conf.d/50unattended-upgrades" do
-  source "50unattended-upgrades.erb"
+template '/etc/apt/apt.conf.d/50unattended-upgrades' do
+  cookbook node['patchman']['template']['50unattended-upgrades']
+  source '50unattended-upgrades.erb'
   mode 0440
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
+  variables(cookbook_name: cookbook_name)
 end
 
 # add motd file to note day and time of patching for this system
 # added in /etc/update-motd.d/92-patch-day-info
-template "/etc/update-motd.d/92-patch-day-info" do
-  source "92-patch-day-info.erb"
-  mode 0440
-  owner "root"
-  group "root"
+template '/etc/update-motd.d/92-patch-day-info' do
+  cookbook node['patchman']['template']['92-patch-day-info']
+  source '92-patch-day-info.erb'
+  mode 0755
+  owner 'root'
+  group 'root'
+  variables(cookbook_name: cookbook_name)
 end
 
 # create cronjob to run unattended-upgrade at the date/time provided in configuration
+
+if node['patchman']['environment'] == 'prod' && node['patchman']['prod']['enable']
+  then cron 'patchman' do
+    minute node['patchman']['prod']['time']['minute']
+    hour node['patchman']['prod']['time']['hour']
+    weekday node['patchman']['prod']['day']
+    command '/usr/bin/unattended-upgrades'
+  end
+elsif node['patchman']['environment'] == 'test' && node['patchman']['test']['enable']
+  then cron 'patchman' do
+    minute node['patchman']['test']['time']['minute']
+    hour node['patchman']['test']['time']['hour']
+    weekday node['patchman']['test']['day']
+    command '/usr/bin/unattended-upgrades'
+  end
+else 
+  log "Unable to setup cron job...ABORTED" do
+    level :warn
+  end
+end
+
+
 
