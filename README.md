@@ -4,6 +4,10 @@ Proof of Concept Chef cookbook to impliment a patch management strategy for Linu
 
 Currently built to work with Debian and Redhat family of Linux OS's Only.
 
+CentOS
+----------------
+Utilizes cron-yum to determine exclusion list. It then uses cron to run at set time based on environment.
+
 
 Ubuntu
 ----------------
