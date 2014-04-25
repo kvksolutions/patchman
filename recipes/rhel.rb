@@ -21,6 +21,8 @@
 
 # move /etc/cron.daily/0yum.cron to /root/yum-cron/yum.cron check for file and if exists move
 
+# add templated /etc/sysconfig/yum-cron file to system
+
 # add motd message, if motd exists create as motd.tail
 
 # setup cronjob to run /root/yum-cron/yum.cron
