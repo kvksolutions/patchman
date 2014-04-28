@@ -53,16 +53,16 @@ template '/etc/update-motd.d/92-patch-day-info' do
   variables(cookbook_name: cookbook_name)
 end
 
-# create cronjob to run unattended-upgrade at the date/time provided in configuration
+# create cronjob to run unattended-upgrade at the date/time provided in attributes
 
-if node['patchman']['environment'] == 'prod' && node['patchman']['prod']['enable']
+if node['patchman']['environment'] == 'prod' && node['patchman']['prod']['cron']['enable']
   then cron 'patchman' do
     minute node['patchman']['prod']['time']['minute']
     hour node['patchman']['prod']['time']['hour']
     weekday node['patchman']['prod']['day']
     command '/usr/bin/unattended-upgrades'
   end
-elsif node['patchman']['environment'] == 'test' && node['patchman']['test']['enable']
+elsif node['patchman']['environment'] == 'test' && node['patchman']['test']['cron']['enable']
   then cron 'patchman' do
     minute node['patchman']['test']['time']['minute']
     hour node['patchman']['test']['time']['hour']
