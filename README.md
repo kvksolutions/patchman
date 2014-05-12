@@ -22,6 +22,7 @@ Attributes
 The define arrays allow for the setting of multiple environments into either the test or prod patching configuration. An example is setting staging and qa under test to share the same patching settings.
 
 `['patchman']['test']['define']`
+
 `['patchman']['prod']['define']`
 
 By default all nodes default to prod for most restrictive patching unless otherwise configured.
@@ -32,6 +33,7 @@ By default all nodes default to prod for most restrictive patching unless otherw
 If you want your patching to send an email you need to ensure a mail service is configured and the following two attributes are set.
 
 `['patchman']['enable']['email'] = true`
+
 `['patchman']['email'] = 'frank@example.com'`
 
 Day and time attributes should be set in crontab format. such as day of week (0 - 6) (Sunday=0), hour/minutes in military time 
