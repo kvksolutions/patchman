@@ -39,12 +39,15 @@ If you want your patching to send an email you need to ensure a mail service is 
 Day and time attributes should be set in crontab format. such as day of week (0 - 6) (Sunday=0), hour/minutes in military time 
 
 `['patchman']['test']['day'] = '1'`
+
 `['patchman']['test']['time']['hour'] = '5'`
+
 `['patchman']['test']['time']['minute'] = '45'`
 
 By default an MOTD file is setup to show scheduled patching state (day and time of next patch). In RHEL/CentOS if a /etc/motd file is already present it will create a motd.tail that needs to then be configured to be read by your MOTD file.
 
 `['patchman']['test']['motd_enabled'] = true`
+
 `['patchman']['prod']['motd_enabled'] = true`
 
 
