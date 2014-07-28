@@ -55,13 +55,19 @@ Exclude list should be setup in the same format as you would use when manually a
 
 `['patchman']['test']['exclude_list'] = []`
 
+`['patchman']['prod']['exclude_list'] = []`
+
 Auto reboot which only works with Debian/Ubuntu is set to false by default
 
 `['patchman']['test']['auto_reboot'] = false`
 
+`['patchman']['prod']['auto_reboot'] = false`
+
 By default both security and stable updated are ran, these setting allows security updates only (Debian/Ubuntu Only)
 
 `['patchman']['debian']['test']['security_only'] = false`
+`['patchman']['debian']['prod']['security_only'] = false`
+
 
 License & Authors
 -----------------
