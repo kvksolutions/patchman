@@ -19,3 +19,5 @@ doc/
 
 .vagrant/
 .git
+.kitchen/
+.kitchen.local.yml
