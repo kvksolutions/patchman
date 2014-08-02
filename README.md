@@ -1,10 +1,11 @@
 Patchman
 ========
-Proof of Concept Chef cookbook to impliment a patch management strategy for Linux systems.
+
+Linux patch management system. Used to configure and manage OS package updates on Ubuntu and RedHat family OS's.
 
 This recipe is designed around the assumption of a two stage (test/prod) weekly patching strategy. It is not the best for every situation but I think its a good middle ground for general use.
 
-Currently designed to work with Debian and Redhat family of Linux OS's Only.
+Currently only designed to work with Debian and Redhat family of Linux OS's.
 
 RHEL/CentOS
 ----------------
