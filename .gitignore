@@ -21,3 +21,5 @@ doc/
 .git
 .kitchen/
 .kitchen.local.yml
+
+.DS_Store
