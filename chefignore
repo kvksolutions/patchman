@@ -99,3 +99,4 @@ Vagrantfile
 ###########
 .kitchen
 
+.DS_Store
