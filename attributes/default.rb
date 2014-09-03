@@ -1,21 +1,3 @@
-#
-# Cookbook Name:: patchman
-# Default:: default
-#
-# Copyright 2014
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
 
 # 'define' array allows for various environments to be defined as either test or prod
 default['patchman']['test']['define'] = []
@@ -25,8 +7,8 @@ default['patchman']['prod']['define'] = []
 # this setting also useful if using chef solo
 default['patchman']['environment'] = 'prod'
 
-# day and time attributes should be set in crontab format. 
-# such as day of week (0 - 6) (Sunday=0), hour/minutes in military time 
+# day and time attributes should be set in crontab format.
+# such as day of week (0 - 6) (Sunday=0), hour/minutes in military time
 default['patchman']['test']['cron']['enable'] = true
 default['patchman']['test']['day'] = '1'
 default['patchman']['test']['time']['hour'] = '5'
