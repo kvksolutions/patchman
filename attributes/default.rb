@@ -19,7 +19,7 @@ default['patchman']['prod']['day'] = '3'
 default['patchman']['prod']['time']['hour'] = '2'
 default['patchman']['prod']['time']['minute'] = '22'
 
-default['patchman']['enable']['email'] = true
+default['patchman']['enable']['email'] = false 
 default['patchman']['email'] = 'frank@example.com'
 default['patchman']['test']['exclude_list'] = ['yum']
 default['patchman']['prod']['exclude_list'] = ['kernel*', 'php*', 'make']
