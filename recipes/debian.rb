@@ -69,11 +69,8 @@ elsif node['patchman']['environment'] == 'test' && node['patchman']['test']['cro
     weekday node['patchman']['test']['day']
     command '/usr/bin/unattended-upgrades'
   end
-else 
-  log "Unable to setup cron job...ABORTED" do
+else
+  log 'Unable to setup cron job...ABORTED' do
     level :warn
   end
 end
-
-
-

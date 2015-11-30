@@ -22,9 +22,9 @@ if node['patchman']['test']['define'].include? node.chef_environment
   then node.default['patchman']['environment'] = 'test'
 elsif node['patchman']['prod']['define'].include? node.chef_environment
   then node.default['patchman']['environment'] = 'prod'
-else 
+else
   log "Unable to determine environment so setting ['patchman']['environment'] to 'prod'" do
-  	level :warn
+    level :warn
   end
   node.default['patchman']['environment'] = 'prod'
 end
@@ -35,7 +35,7 @@ when 'debian'
 when 'rhel'
   include_recipe 'patchman::rhel'
 else
-  log "Not able to locate supported OS" do
-  	level :warn
+  log 'Not able to locate supported OS' do
+    level :warn
   end
 end

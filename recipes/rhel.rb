@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-# install yum-crom package 
+# install yum-crom package
 yum_package 'yum-cron' do
   action :install
 end
@@ -33,7 +33,7 @@ end
 # move /etc/cron.daily/0yum.cron to /root/yum-cron/yum.cron check for file and if exists move
 execute '0yum.cron move' do
   command 'mv /etc/cron.daily/0yum.cron /root/yum-cron/yum.cron'
-  only_if { File.exists?('/etc/cron.daily/0yum.cron') }
+  only_if { File.exist?('/etc/cron.daily/0yum.cron') }
 end
 
 # add templated /etc/sysconfig/yum-cron file to system
@@ -56,8 +56,8 @@ if File.size?('/etc/motd')
     group 'root'
     variables(cookbook_name: cookbook_name)
   end
-  log "Appears you already have a motd setup, adding motd.tail file. Ensure your system can run it." do
-  	level :warn
+  log 'Appears you already have a motd setup, adding motd.tail file. Ensure your system can run it.' do
+    level :warn
   end
 else
   template '/etc/motd' do
@@ -85,8 +85,8 @@ elsif node['patchman']['environment'] == 'test' && node['patchman']['test']['cro
     weekday node['patchman']['test']['day']
     command '/root/yum-cron/yum.cron'
   end
-else 
-  log "Unable to setup cron job...ABORTED" do
+else
+  log 'Unable to setup cron job...ABORTED' do
     level :warn
   end
 end
