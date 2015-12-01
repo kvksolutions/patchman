@@ -15,11 +15,14 @@ describe 'patchman::default' do
           ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
           end.converge(described_recipe)
         end
+        it 'writes a log action' do
+          expect(chef_run).to write_log("Unable to determine environment so setting ['patchman']['environment'] to 'prod'")
+        end
         if platform == 'ubuntu'
           it 'includes patchman::debian recipe' do
             expect(chef_run).to include_recipe('patchman::debian')
           end
-        else
+        elsif platform == 'rhel'
           it 'includes patchman::rhel recipe' do
             expect(chef_run).to include_recipe('patchman::rhel')
           end

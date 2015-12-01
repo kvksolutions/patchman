@@ -18,7 +18,7 @@
 #
 
 # install yum-crom package
-yum_package 'yum-cron' do
+package 'yum-cron' do
   action :install
 end
 
@@ -72,14 +72,14 @@ end
 
 # setup cronjob to run /root/yum-cron/yum.cron
 if node['patchman']['environment'] == 'prod' && node['patchman']['prod']['cron']['enable']
-  then cron 'patchman' do
+  cron 'patchman' do
     minute node['patchman']['prod']['time']['minute']
     hour node['patchman']['prod']['time']['hour']
     weekday node['patchman']['prod']['day']
     command '/root/yum-cron/yum.cron'
   end
 elsif node['patchman']['environment'] == 'test' && node['patchman']['test']['cron']['enable']
-  then cron 'patchman' do
+  cron 'patchman' do
     minute node['patchman']['test']['time']['minute']
     hour node['patchman']['test']['time']['hour']
     weekday node['patchman']['test']['day']

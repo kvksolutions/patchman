@@ -19,11 +19,11 @@ Unattended-Upgrade::Allowed-Origins {
 Unattended-Upgrade::Package-Blacklist {
 <% if node['patchman']['environment'] == "prod"-%>
 <% node['patchman']['prod']['exclude_list'].each do |pkg| %>
-  <%= '     "#{pkg}";' %>
+  <%=  "#{pkg};" %>
   <% end %>
 <% elsif -%>
 <% node['patchman']['test']['exclude_list'].each do |pkg| %>
-  <%= '     "#{pkg}";' %>
+  <%=  "#{pkg};" %>
   <% end %>
 <% end %>
 };
