@@ -18,7 +18,7 @@
 #
 
 # install unattended-upgrade package
-apt_package 'unattended-upgrades' do
+package 'unattended-upgrades' do
   action :install
 end
 
@@ -26,7 +26,7 @@ end
 template '/etc/apt/apt.conf.d/02periodic' do
   cookbook node['patchman']['template']['02periodic']
   source '02periodic.erb'
-  mode 0440
+  mode 0644
   owner 'root'
   group 'root'
   variables(cookbook_name: cookbook_name)
@@ -36,7 +36,7 @@ end
 template '/etc/apt/apt.conf.d/50unattended-upgrades' do
   cookbook node['patchman']['template']['50unattended-upgrades']
   source '50unattended-upgrades.erb'
-  mode 0440
+  mode 0644
   owner 'root'
   group 'root'
   variables(cookbook_name: cookbook_name)
@@ -54,26 +54,22 @@ template '/etc/update-motd.d/92-patch-day-info' do
 end
 
 # create cronjob to run unattended-upgrade at the date/time provided in attributes
-
 if node['patchman']['environment'] == 'prod' && node['patchman']['prod']['cron']['enable']
-  then cron 'patchman' do
+  cron 'patchman' do
     minute node['patchman']['prod']['time']['minute']
     hour node['patchman']['prod']['time']['hour']
     weekday node['patchman']['prod']['day']
     command '/usr/bin/unattended-upgrades'
   end
 elsif node['patchman']['environment'] == 'test' && node['patchman']['test']['cron']['enable']
-  then cron 'patchman' do
+  cron 'patchman' do
     minute node['patchman']['test']['time']['minute']
     hour node['patchman']['test']['time']['hour']
     weekday node['patchman']['test']['day']
     command '/usr/bin/unattended-upgrades'
   end
-else 
-  log "Unable to setup cron job...ABORTED" do
+else
+  log 'Unable to setup cron job...ABORTED' do
     level :warn
   end
 end
-
-
-

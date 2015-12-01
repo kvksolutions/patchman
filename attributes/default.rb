@@ -19,16 +19,16 @@ default['patchman']['prod']['day'] = '3'
 default['patchman']['prod']['time']['hour'] = '2'
 default['patchman']['prod']['time']['minute'] = '22'
 
-default['patchman']['enable']['email'] = false 
+default['patchman']['enable']['email'] = false
 default['patchman']['email'] = 'frank@example.com'
 default['patchman']['test']['exclude_list'] = ['yum']
-default['patchman']['prod']['exclude_list'] = ['kernel*', 'php*', 'make']
+default['patchman']['prod']['exclude_list'] = ['kernel*', 'php*']
 default['patchman']['test']['auto_reboot'] = false
 default['patchman']['prod']['auto_reboot'] = false
 default['patchman']['test']['motd_enabled'] = true
 default['patchman']['prod']['motd_enabled'] = true
 
-# by default both security and stable updated are ran, these setting allows security updates only
+# by default both security and stable updated are ran, setting to true allows security only
 default['patchman']['debian']['test']['security_only'] = false
 default['patchman']['debian']['prod']['security_only'] = false
 
