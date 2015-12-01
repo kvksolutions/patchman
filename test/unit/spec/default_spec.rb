@@ -3,7 +3,6 @@
 require_relative 'spec_helper'
 
 describe 'patchman::default' do
-
   platforms = {
     'ubuntu' => ['12.04', '14.04'],
     'centos' => ['6.7', '7.0']

@@ -295,6 +295,3 @@ DEPENDENCIES
   rubocop (~> 0.24)
   test-kitchen
   vagrant-wrapper
-
-BUNDLED WITH
-   1.10.6
