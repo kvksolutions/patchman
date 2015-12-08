@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cybermerc/patchman.svg?branch=master)](https://travis-ci.org/cybermerc/patchman)
+
 Patchman
 ========
 
